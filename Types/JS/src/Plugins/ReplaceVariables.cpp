@@ -4,15 +4,15 @@ namespace GView::Type::JS::Plugins
 {
 using namespace GView::View::LexicalViewer;
 
-std::string_view ReplaceStrings::GetName()
+std::string_view ReplaceVariables::GetName()
 {
     return "Replace strings";
 }
-std::string_view ReplaceStrings::GetDescription()
+std::string_view ReplaceVariables::GetDescription()
 {
     return "Replace the variables with their string value.";
 }
-bool ReplaceStrings::CanBeAppliedOn(const GView::View::LexicalViewer::PluginData& data)
+bool ReplaceVariables::CanBeAppliedOn(const GView::View::LexicalViewer::PluginData& data)
 {
     for (auto index = data.startIndex; index < data.endIndex; index++)
     {
@@ -23,7 +23,7 @@ bool ReplaceStrings::CanBeAppliedOn(const GView::View::LexicalViewer::PluginData
     }
     return false;
 }
-GView::View::LexicalViewer::PluginAfterActionRequest ReplaceStrings::Execute(GView::View::LexicalViewer::PluginData& data)
+GView::View::LexicalViewer::PluginAfterActionRequest ReplaceVariables::Execute(GView::View::LexicalViewer::PluginData& data)
 {
     int32 index = (int32) data.endIndex - 1;
     LocalUnicodeStringBuilder<256> temp;

@@ -270,7 +270,16 @@ namespace Type
                 virtual GView::View::LexicalViewer::PluginAfterActionRequest Execute(GView::View::LexicalViewer::PluginData& data) override;
             };
 
-            class ReplaceStrings : public GView::View::LexicalViewer::Plugin
+            class ReplaceVariables : public GView::View::LexicalViewer::Plugin
+            {
+              public:
+                virtual std::string_view GetName() override;
+                virtual std::string_view GetDescription() override;
+                virtual bool CanBeAppliedOn(const GView::View::LexicalViewer::PluginData& data) override;
+                virtual GView::View::LexicalViewer::PluginAfterActionRequest Execute(GView::View::LexicalViewer::PluginData& data) override;
+            };
+
+            class RemoveComments : public GView::View::LexicalViewer::Plugin
             {
               public:
                 virtual std::string_view GetName() override;
@@ -317,7 +326,8 @@ namespace Type
             {
                 Plugins::AddStrings addStrings;
                 Plugins::ReverseStrings reverseStrings;
-                Plugins::ReplaceStrings replaceStrings;
+                Plugins::ReplaceVariables replaceVariables;
+                Plugins::RemoveComments removeComments;
             } plugins;
             JSFile();
             virtual ~JSFile()
